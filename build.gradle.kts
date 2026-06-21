@@ -12,7 +12,6 @@ val customDeps = project.property("custom-deps").toString().split(",").map { it.
 plugins {
     id("java-library")
     id("com.gradleup.shadow") version "9.4.2"
-    id("xyz.jpenilla.run-paper") version "3.0.2"
 }
 
 repositories {
@@ -65,27 +64,5 @@ java {
 tasks {
     build {
         dependsOn(shadowJar)
-    }
-
-    runServer {
-        minecraftVersion("26.1.2")
-        jvmArgs("-Xms2G", "-Xmx2G", "-Dcom.mojang.eula.agree=true")
-    }
-
-    processResources {
-        val props = mapOf(
-            "pluginName" to pluginName,
-            "version" to version,
-            "description" to project.description,
-            "paperApiVersion" to paperApiVersion,
-            "pluginPackage" to pluginPackage,
-            "group" to project.group,
-            "website" to website,
-            "authors" to authors,
-            "loadType" to loadType
-        )
-        filesMatching("paper-plugin.yml") {
-            expand(props)
-        }
     }
 }
