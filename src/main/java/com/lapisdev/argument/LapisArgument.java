@@ -6,11 +6,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class LapisArgument extends JavaPlugin {
 
     public static final ArgumentParser<?>[] PARSERS = new ArgumentParser<?>[]{
-
+            new EntityArgument()
     };
 
     public static final ArgumentSuggestion[] SUGGESTIONS = new ArgumentSuggestion[]{
-
+            new EntityArgument()
     };
 
     public static void register(PaperCommandManager commandManager) {
